@@ -1,0 +1,65 @@
+{
+    "config": {
+        "prefix": "api/v1",
+        "routes":
+            {
+                "/": {
+                    "controller": "Home"
+                }
+            }
+    },
+    "noPrefixconfig": {
+        "routes":
+            {
+                "/": {
+                    "controller": "Home"
+                }
+            }
+    },
+    "noRootConfig": {
+        "prefix": "api/v1",
+        "routes":
+            {
+                "/list": {
+                    "controller": "Home"
+                }
+            }
+    },
+    "capitalizeControllerConfig": {
+        "prefix": "api/v1",
+        "routes":
+            {
+                "/list": {
+                    "controller": "home"
+                }
+            }
+    },
+    "noControllerConfig": {
+        "prefix": "api/v1",
+        "routes":
+            {
+                "/list": {
+                }
+            }
+    },
+    "nestedConfig": [
+        {
+            "prefix": "api/v1",
+            "routes":
+                {
+                    "/": {
+                        "controller": "Home"
+                    }
+                }
+        },
+        {
+            "prefix": "api/v2",
+            "routes":
+                {
+                    "/": {
+                        "controller": "Home"
+                    }
+                }
+        }
+    ]
+}
