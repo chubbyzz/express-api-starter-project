@@ -5,6 +5,7 @@
   "repository": "git@github.com:chubbyzz/express-api-starter-project.git",
   "license": "MIT",
   "scripts": {
+    "test": "jest",
     "start": "nodemon server.js"
   },
   "dependencies": {
