@@ -1,7 +1,7 @@
 const routesConfig = require('./routes.json');
 const validHttpTypes = ['options', 'get', 'head', 'put', 'post', 'delete', 'patch'];
 
-function jsonToRoutes (config) {
+function make (config) {
     if(config.constructor === Array)
         return formatedRoutes(config)
     return formatedRoute(config)
@@ -43,10 +43,10 @@ function validateType (type) {
     return type
 }
 
-const routes = jsonToRoutes(routesConfig);
+const routes = make(routesConfig);
 
 module.exports = {
-    jsonToRoutes,
+    make,
     formatedRoutes,
     formatedRoute
 };
