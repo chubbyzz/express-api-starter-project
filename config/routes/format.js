@@ -1,3 +1,4 @@
+const { route } = require('express/lib/application');
 const routesConfig = require('./routes.json');
 const validHttpTypes = ['options', 'get', 'head', 'put', 'post', 'delete', 'patch'];
 
@@ -15,12 +16,14 @@ function formatedRoute (config) {
     const routes = config.routes;
     const routeList = []
     for(const path in routes) {
+        routes[path];
         const type = validateType(routes[path].type);
         const controller = validateControllerPresence(routes[path].controller);
         routeList.push({
             'controller': `${controller}Controller`,
             'type': type,
-            'path': `${config.prefix || ''}${path}`
+            'path': `${config.prefix || ''}${path}`,
+            'action': routes[path].action
         })
     }
     return routeList
@@ -48,5 +51,6 @@ const routes = make(routesConfig);
 module.exports = {
     make,
     formatedRoutes,
-    formatedRoute
+    formatedRoute,
+    routes
 };

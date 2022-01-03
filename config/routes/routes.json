@@ -3,7 +3,8 @@
     "routes":
         {
             "/": {
-                "controller": "Starter"
+                "controller": "Starter",
+                "action": "index"
             }
         }
 }
