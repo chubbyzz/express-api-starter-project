@@ -1,4 +1,4 @@
-const routeBuilder = require('../../../config/routes/builder');
+const formater = require('../../../config/routes/format');
 const fakeRoutes = require('./fakeRoutes.json');
 
 function fakeHttpMethodType (type) {
@@ -8,7 +8,7 @@ function fakeHttpMethodType (type) {
 }
 
 it('shoud format a route config', () => {
-    const routes = routeBuilder.formatedRoute(fakeRoutes.config)
+    const routes = formater.formatedRoute(fakeRoutes.config)
     expect(routes).toEqual([
         {
           controller: 'HomeController',
@@ -20,7 +20,7 @@ it('shoud format a route config', () => {
 
 
 it('shoud format a route config with 2 prefix', () => {
-    const routes = routeBuilder.formatedRoutes(fakeRoutes.nestedConfig)
+    const routes = formater.formatedRoutes(fakeRoutes.nestedConfig)
     expect(routes).toEqual([
         {
           controller: 'HomeController',
@@ -36,7 +36,7 @@ it('shoud format a route config with 2 prefix', () => {
 });
 
 it('shoud list the routes', () => {
-    const routes = routeBuilder.jsonToRoutes(fakeRoutes.config)
+    const routes = formater.make(fakeRoutes.config)
     expect(routes).toEqual([
         {
           controller: 'HomeController',
@@ -47,7 +47,7 @@ it('shoud list the routes', () => {
 });
 
 it('shoud list the routes without prefix', () => {
-    const routes = routeBuilder.jsonToRoutes(fakeRoutes.noPrefixconfig)
+    const routes = formater.make(fakeRoutes.noPrefixconfig)
     expect(routes).toEqual([
         {
           controller: 'HomeController',
@@ -58,7 +58,7 @@ it('shoud list the routes without prefix', () => {
 });
 
 it('shoud list the routes without root path', () => {
-    const routes = routeBuilder.jsonToRoutes(fakeRoutes.noRootConfig)
+    const routes = formater.make(fakeRoutes.noRootConfig)
     expect(routes).toEqual([
         {
           controller: 'HomeController',
@@ -70,7 +70,7 @@ it('shoud list the routes without root path', () => {
 
 it('shoud fail buecouse type is invalid', () => {
     const tryToConfig = () => {
-        return routeBuilder.jsonToRoutes(fakeHttpMethodType('posts'))
+        return formater.make(fakeHttpMethodType('posts'))
     }
 
     expect(tryToConfig).toThrow('Unknown Route Type: "posts" is not a valid type');
@@ -78,14 +78,14 @@ it('shoud fail buecouse type is invalid', () => {
 
 it('shoud fail buecouse controller is null is invalid', () => {
     const tryToConfig = () => {
-        return routeBuilder.jsonToRoutes(fakeRoutes.noControllerConfig)
+        return formater.make(fakeRoutes.noControllerConfig)
     }
 
     expect(tryToConfig).toThrow('The Controller should be present');
 });
 
 it('shoud list the post route', () => {
-    const routes = routeBuilder.jsonToRoutes(fakeHttpMethodType('post'))
+    const routes = formater.make(fakeHttpMethodType('post'))
     expect(routes).toEqual([
         {
           controller: 'HomeController',
@@ -96,7 +96,7 @@ it('shoud list the post route', () => {
 });
 
 it('shoud list the post route', () => {
-    const routes = routeBuilder.jsonToRoutes(fakeHttpMethodType('post'))
+    const routes = formater.make(fakeHttpMethodType('post'))
     expect(routes).toEqual([
         {
           controller: 'HomeController',
@@ -107,7 +107,7 @@ it('shoud list the post route', () => {
 });
 
 it('shoud list the options route', () => {
-    const routes = routeBuilder.jsonToRoutes(fakeHttpMethodType('options'))
+    const routes = formater.make(fakeHttpMethodType('options'))
     expect(routes).toEqual([
         {
           controller: 'HomeController',
@@ -118,7 +118,7 @@ it('shoud list the options route', () => {
 });
 
 it('shoud list the head route', () => {
-    const routes = routeBuilder.jsonToRoutes(fakeHttpMethodType('head'))
+    const routes = formater.make(fakeHttpMethodType('head'))
     expect(routes).toEqual([
         {
           controller: 'HomeController',
@@ -129,7 +129,7 @@ it('shoud list the head route', () => {
 });
 
 it('shoud list the put route', () => {
-    const routes = routeBuilder.jsonToRoutes(fakeHttpMethodType('put'))
+    const routes = formater.make(fakeHttpMethodType('put'))
     expect(routes).toEqual([
         {
           controller: 'HomeController',
@@ -140,7 +140,7 @@ it('shoud list the put route', () => {
 });
 
 it('shoud list the delete route', () => {
-    const routes = routeBuilder.jsonToRoutes(fakeHttpMethodType('delete'))
+    const routes = formater.make(fakeHttpMethodType('delete'))
     expect(routes).toEqual([
         {
           controller: 'HomeController',
@@ -151,7 +151,7 @@ it('shoud list the delete route', () => {
 });
 
 it('shoud list the patch route', () => {
-    const routes = routeBuilder.jsonToRoutes(fakeHttpMethodType('patch'))
+    const routes = formater.make(fakeHttpMethodType('patch'))
     expect(routes).toEqual([
         {
           controller: 'HomeController',
@@ -162,7 +162,7 @@ it('shoud list the patch route', () => {
 });
 
 it('shoud list the get route', () => {
-    const routes = routeBuilder.jsonToRoutes(fakeHttpMethodType('get'))
+    const routes = formater.make(fakeHttpMethodType('get'))
     expect(routes).toEqual([
         {
           controller: 'HomeController',
@@ -173,7 +173,7 @@ it('shoud list the get route', () => {
 });
 
 it('shoud list the get route by default', () => {
-    const routes = routeBuilder.jsonToRoutes(fakeHttpMethodType(undefined))
+    const routes = formater.make(fakeHttpMethodType(undefined))
     expect(routes).toEqual([
         {
           controller: 'HomeController',
@@ -182,7 +182,7 @@ it('shoud list the get route by default', () => {
         }
       ]);
 
-    const nullTypeRoutes = routeBuilder.jsonToRoutes(fakeHttpMethodType(null))
+    const nullTypeRoutes = formater.make(fakeHttpMethodType(null))
     expect(nullTypeRoutes).toEqual([
         {
           controller: 'HomeController',
@@ -193,7 +193,7 @@ it('shoud list the get route by default', () => {
 });
 
 it('shoud list the routes', () => {
-    const routes = routeBuilder.jsonToRoutes(fakeRoutes.nestedConfig)
+    const routes = formater.make(fakeRoutes.nestedConfig)
     expect(routes).toEqual([
         {
           controller: 'HomeController',
