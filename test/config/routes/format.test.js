@@ -20,209 +20,209 @@ it('shoud format a route config', () => {
 });
 
 
-// it('shoud format a route config with 2 prefix', () => {
-//     const routes = formater.formatedRoutes(fakeRoutes.nestedConfig)
-//     expect(routes).toEqual([
-//         {
-//           controller: 'HomeController',
-//           type: 'get',
-//           path: "api/v1/",
-//           action: 'index'
-//         },
-//         {
-//           controller: 'HomeController',
-//           type: 'get',
-//           path: "api/v2/",
-//           action: 'index'
-//         },
-//       ]);
-// });
+it('shoud format a route config with 2 prefix', () => {
+    const routes = formater.formatedRoutes(fakeRoutes.nestedConfig)
+    expect(routes).toEqual([
+        {
+          controller: 'HomeController',
+          type: 'get',
+          path: "api/v1/",
+          action: 'index'
+        },
+        {
+          controller: 'HomeController',
+          type: 'get',
+          path: "api/v2/",
+          action: 'index'
+        },
+      ]);
+});
 
-// it('shoud list the routes', () => {
-//     const routes = formater.make(fakeRoutes.config)
-//     expect(routes).toEqual([
-//         {
-//           controller: 'HomeController',
-//           type: 'get',
-//           path: "api/v1/",
-//           action: 'index'
-//         }
-//       ]);
-// });
+it('shoud list the routes', () => {
+    const routes = formater.make(fakeRoutes.config)
+    expect(routes).toEqual([
+        {
+          controller: 'HomeController',
+          type: 'get',
+          path: "api/v1/",
+          action: 'index'
+        }
+      ]);
+});
 
-// it('shoud list the routes without prefix', () => {
-//     const routes = formater.make(fakeRoutes.noPrefixconfig)
-//     expect(routes).toEqual([
-//         {
-//           controller: 'HomeController',
-//           type: 'get',
-//           path: "/",
-//           action: 'index'
-//         }
-//       ]);
-      
-// });
+it('shoud list the routes without prefix', () => {
+    const routes = formater.make(fakeRoutes.noPrefixconfig)
+    expect(routes).toEqual([
+        {
+          controller: 'HomeController',
+          type: 'get',
+          path: "/",
+          action: 'index'
+        }
+      ]);
 
-// it('shoud list the routes without root path', () => {
-//     const routes = formater.make(fakeRoutes.noRootConfig)
-//     expect(routes).toEqual([
-//         {
-//           controller: 'HomeController',
-//           type: 'get',
-//           path: "api/v1/list",
-//           action: 'index'
-//         }
-//       ]);
-// });
+});
 
-// it('shoud fail buecouse type is invalid', () => {
-//     const tryToConfig = () => {
-//         return formater.make(fakeHttpMethodType('posts'))
-//     }
+it('shoud list the routes without root path', () => {
+    const routes = formater.make(fakeRoutes.noRootConfig)
+    expect(routes).toEqual([
+        {
+          controller: 'HomeController',
+          type: 'get',
+          path: "api/v1/list",
+          action: 'index'
+        }
+      ]);
+});
 
-//     expect(tryToConfig).toThrow('Unknown Route Type: "posts" is not a valid type');
-// });
+it('shoud fail buecouse type is invalid', () => {
+    const tryToConfig = () => {
+        return formater.make(fakeHttpMethodType('posts'))
+    }
 
-// it('shoud fail buecouse controller is null is invalid', () => {
-//     const tryToConfig = () => {
-//         return formater.make(fakeRoutes.noControllerConfig)
-//     }
+    expect(tryToConfig).toThrow('Unknown Route Type: "posts" is not a valid type');
+});
 
-//     expect(tryToConfig).toThrow('The Controller should be present');
-// });
+it('shoud fail buecouse controller is null is invalid', () => {
+    const tryToConfig = () => {
+        return formater.make(fakeRoutes.noControllerConfig)
+    }
 
-// it('shoud list the post route', () => {
-//     const routes = formater.make(fakeHttpMethodType('post'))
-//     expect(routes).toEqual([
-//         {
-//           controller: 'HomeController',
-//           type: 'post',
-//           path: "api/v1/",
-//           action: 'index'
-//         }
-//       ]);
-// });
+    expect(tryToConfig).toThrow('The Controller should be present');
+});
 
-// it('shoud list the post route', () => {
-//     const routes = formater.make(fakeHttpMethodType('post'))
-//     expect(routes).toEqual([
-//         {
-//           controller: 'HomeController',
-//           type: 'post',
-//           path: "api/v1/",
-//           action: 'index'
-//         }
-//       ]);
-// });
+it('shoud list the post route', () => {
+    const routes = formater.make(fakeHttpMethodType('post'))
+    expect(routes).toEqual([
+        {
+          controller: 'HomeController',
+          type: 'post',
+          path: "api/v1/",
+          action: 'index'
+        }
+      ]);
+});
 
-// it('shoud list the options route', () => {
-//     const routes = formater.make(fakeHttpMethodType('options'))
-//     expect(routes).toEqual([
-//         {
-//           controller: 'HomeController',
-//           type: 'options',
-//           path: "api/v1/",
-//           action: 'index'
-//         }
-//       ]);
-// });
+it('shoud list the post route', () => {
+    const routes = formater.make(fakeHttpMethodType('post'))
+    expect(routes).toEqual([
+        {
+          controller: 'HomeController',
+          type: 'post',
+          path: "api/v1/",
+          action: 'index'
+        }
+      ]);
+});
 
-// it('shoud list the head route', () => {
-//     const routes = formater.make(fakeHttpMethodType('head'))
-//     expect(routes).toEqual([
-//         {
-//           controller: 'HomeController',
-//           type: 'head',
-//           path: "api/v1/",
-//           action: 'index'
-//         }
-//       ]);
-// });
+it('shoud list the options route', () => {
+    const routes = formater.make(fakeHttpMethodType('options'))
+    expect(routes).toEqual([
+        {
+          controller: 'HomeController',
+          type: 'options',
+          path: "api/v1/",
+          action: 'index'
+        }
+      ]);
+});
 
-// it('shoud list the put route', () => {
-//     const routes = formater.make(fakeHttpMethodType('put'))
-//     expect(routes).toEqual([
-//         {
-//           controller: 'HomeController',
-//           type: 'put',
-//           path: "api/v1/",
-//           action: 'index'
-//         }
-//       ]);
-// });
+it('shoud list the head route', () => {
+    const routes = formater.make(fakeHttpMethodType('head'))
+    expect(routes).toEqual([
+        {
+          controller: 'HomeController',
+          type: 'head',
+          path: "api/v1/",
+          action: 'index'
+        }
+      ]);
+});
 
-// it('shoud list the delete route', () => {
-//     const routes = formater.make(fakeHttpMethodType('delete'))
-//     expect(routes).toEqual([
-//         {
-//           controller: 'HomeController',
-//           type: 'delete',
-//           path: "api/v1/",
-//           action: 'index'
-//         }
-//       ]);
-// });
+it('shoud list the put route', () => {
+    const routes = formater.make(fakeHttpMethodType('put'))
+    expect(routes).toEqual([
+        {
+          controller: 'HomeController',
+          type: 'put',
+          path: "api/v1/",
+          action: 'index'
+        }
+      ]);
+});
 
-// it('shoud list the patch route', () => {
-//     const routes = formater.make(fakeHttpMethodType('patch'))
-//     expect(routes).toEqual([
-//         {
-//           controller: 'HomeController',
-//           type: 'patch',
-//           path: "api/v1/",
-//           action: 'index'
-//         }
-//       ]);
-// });
+it('shoud list the delete route', () => {
+    const routes = formater.make(fakeHttpMethodType('delete'))
+    expect(routes).toEqual([
+        {
+          controller: 'HomeController',
+          type: 'delete',
+          path: "api/v1/",
+          action: 'index'
+        }
+      ]);
+});
 
-// it('shoud list the get route', () => {
-//     const routes = formater.make(fakeHttpMethodType('get'))
-//     expect(routes).toEqual([
-//         {
-//           controller: 'HomeController',
-//           type: 'get',
-//           path: "api/v1/",
-//           action: 'index'
-//         }
-//       ]);
-// });
+it('shoud list the patch route', () => {
+    const routes = formater.make(fakeHttpMethodType('patch'))
+    expect(routes).toEqual([
+        {
+          controller: 'HomeController',
+          type: 'patch',
+          path: "api/v1/",
+          action: 'index'
+        }
+      ]);
+});
 
-// it('shoud list the get route by default', () => {
-//     const routes = formater.make(fakeHttpMethodType(undefined))
-//     expect(routes).toEqual([
-//         {
-//           controller: 'HomeController',
-//           type: 'get',
-//           path: "api/v1/",
-//           action: 'index'
-//         }
-//       ]);
+it('shoud list the get route', () => {
+    const routes = formater.make(fakeHttpMethodType('get'))
+    expect(routes).toEqual([
+        {
+          controller: 'HomeController',
+          type: 'get',
+          path: "api/v1/",
+          action: 'index'
+        }
+      ]);
+});
 
-//     const nullTypeRoutes = formater.make(fakeHttpMethodType(null))
-//     expect(nullTypeRoutes).toEqual([
-//         {
-//           controller: 'HomeController',
-//           type: 'get',
-//           path: "api/v1/",
-//           action: 'index'
-//         }
-//       ]);
-// });
+it('shoud list the get route by default', () => {
+    const routes = formater.make(fakeHttpMethodType(undefined))
+    expect(routes).toEqual([
+        {
+          controller: 'HomeController',
+          type: 'get',
+          path: "api/v1/",
+          action: 'index'
+        }
+      ]);
 
-// it('shoud list the routes', () => {
-//     const routes = formater.make(fakeRoutes.nestedConfig)
-//     expect(routes).toEqual([
-//         {
-//           controller: 'HomeController',
-//           type: 'get',
-//           path: "api/v1/",
-//           action: 'index'
-//         },
-//         {
-//           controller: 'HomeController',
-//           type: 'get',
-//           path: "api/v2/",
-//           action: 'index'
-//         },
-//       ]);
-// });
+    const nullTypeRoutes = formater.make(fakeHttpMethodType(null))
+    expect(nullTypeRoutes).toEqual([
+        {
+          controller: 'HomeController',
+          type: 'get',
+          path: "api/v1/",
+          action: 'index'
+        }
+      ]);
+});
+
+it('shoud list the routes', () => {
+    const routes = formater.make(fakeRoutes.nestedConfig)
+    expect(routes).toEqual([
+        {
+          controller: 'HomeController',
+          type: 'get',
+          path: "api/v1/",
+          action: 'index'
+        },
+        {
+          controller: 'HomeController',
+          type: 'get',
+          path: "api/v2/",
+          action: 'index'
+        },
+      ]);
+});

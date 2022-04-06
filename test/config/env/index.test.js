@@ -2,7 +2,7 @@ describe('change enviroment change the env variables', () => {
     beforeEach(() => {
         return jest.resetModules();
     });
-    
+
     it('should be in dev enviroment', () => {
         process.env.NODE_ENV = 'development';
         const dotenv = require('../../../config/env');
